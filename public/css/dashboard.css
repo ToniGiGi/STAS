@@ -1,0 +1,170 @@
+/* Reset y estilos base */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+body { background-color: #F0F2F5; color: #333; overflow-x: hidden; }
+
+/* Contenedor Principal (Flexbox) */
+.app-container { display: flex; height: 100vh; }
+
+/* SIDEBAR */
+.sidebar { width: 260px; background-color: #2D343C; color: white; display: flex; flex-direction: column; }
+.sidebar-brand { display: flex; align-items: center; padding: 20px; border-bottom: 1px solid #3E4650; }
+.brand-logo { width: 45px; height: auto; margin-right: 15px; }
+.brand-title { font-size: 1.5rem; font-weight: bold; display: block; letter-spacing: 1px; }
+.brand-subtitle { font-size: 0.75rem; color: #BDC3C7; }
+
+.sidebar-nav { padding-top: 20px; display: flex; flex-direction: column; }
+.nav-item { padding: 15px 25px; color: #BDC3C7; text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
+.nav-item i { width: 25px; font-size: 1.1rem; }
+.nav-item:hover { color: white; background-color: #3E4650; }
+.nav-item.active { background-color: #4A8A5A; color: white; border-left: 4px solid #82C91E; } /* Verde automotriz */
+
+/* CONTENIDO PRINCIPAL */
+.main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+
+/* TOPBAR */
+.topbar { 
+    height: 70px; 
+    min-height: 70px; /* Asegura que la altura mínima sea 70px */
+    flex-shrink: 0;   /* Prohíbe que Flexbox aplaste la barra */
+    background-color: white; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 30px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    z-index: 10; 
+}
+.search-bar { display: flex; align-items: center; background-color: #F0F2F5; padding: 8px 15px; border-radius: 8px; width: 400px; }
+.search-bar input { border: none; background: transparent; outline: none; width: 100%; margin-left: 10px; font-size: 0.95rem; }
+.search-bar i { color: #7F8C8D; }
+
+.user-profile { display: flex; align-items: center; gap: 15px; }
+.notification-icon, .menu-grid-icon { font-size: 1.2rem; color: #7F8C8D; cursor: pointer; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.user-name { font-weight: 600; font-size: 0.95rem; }
+
+/* ÁREA DEL DASHBOARD */
+.dashboard-area { padding: 30px; }
+.page-title { font-size: 1.8rem; margin-bottom: 25px; color: #111; }
+
+/* CSS GRID PARA LAS TARJETAS */
+.dashboard-grid { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* 4 columnas */
+    grid-template-rows: auto auto; 
+    gap: 20px; 
+}
+
+/* Tarjetas base */
+.card { background-color: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); }
+.card h3 { font-size: 1.1rem; color: #111; margin-bottom: 5px; }
+.subtitle { color: #7F8C8D; font-size: 0.9rem; margin-bottom: 15px; }
+
+/* Posicionamiento específico en el Grid */
+.chart-card { grid-column: 1 / 2; grid-row: 1 / 3; min-height: 300px; }
+.stat-card { text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.stat-number { font-size: 3rem; font-weight: bold; color: #2D6541; margin-top: 10px; }
+
+.activity-card { grid-column: 1 / 3; }
+.calendar-card { grid-column: 3 / 5; }
+
+/* Estilos de Actividad Reciente */
+.card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.filter-text { color: #BDC3C7; cursor: pointer; }
+.activity-list { list-style: none; }
+.activity-list li { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+.activity-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+/* =========================================
+   NUEVO: Estilos para Avatares con Iniciales
+   ========================================= */
+.activity-initials {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #34744C; /* Verde Automotriz */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-right: 15px;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.activity-info { flex: 1; display: flex; flex-direction: column; }
+.activity-info strong { color: #111; font-size: 1rem; }
+.activity-info span { color: #7F8C8D; font-size: 0.85rem; }
+.activity-tag { font-weight: bold; color: #111; }
+
+/* Placeholders (Gráfica y Calendario) */
+.chart-placeholder, .calendar-placeholder { height: 200px; display: flex; justify-content: center; align-items: center; background-color: #FAFAFA; border: 1px dashed #ccc; border-radius: 8px; margin-top: 10px; }
+
+/* =========================================
+   Estilos del Mini Calendario
+   ========================================= */
+.mini-calendar {
+    width: 100%;
+    margin-top: 15px;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.calendar-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7F8C8D;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+.calendar-header button:hover {
+    color: #2D343C;
+}
+.calendar-header h4 {
+    font-size: 1rem;
+    color: #2C3E50;
+    margin: 0;
+}
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #BDC3C7;
+    margin-bottom: 10px;
+}
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+.calendar-dates div {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.calendar-dates div:not(.empty):not(.interview-day):hover {
+    background-color: #F0F2F5;
+}
+.calendar-dates div.empty {
+    cursor: default;
+}
+/* Estilo para los días con entrevista (Verde Automotriz) */
+.calendar-dates div.interview-day {
+    background-color: #34744C;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(52, 116, 76, 0.4);
+}

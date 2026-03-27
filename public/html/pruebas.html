@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAS - Catálogo de Pruebas Soft Skills</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/pruebas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="../img/logomini.png" alt="STAS Logo Mini" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-title">STAS</span>
+                    <span class="brand-subtitle">Strategic Talent<br>Auto-Selector</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i> Panel Principal</a>
+                <a href="vacantes.html" class="nav-item"><i class="fas fa-briefcase"></i> Vacantes</a>
+                <a href="candidatos.html" class="nav-item"><i class="fas fa-user-friends"></i> Candidatos</a>
+                <a href="pruebas.html" class="nav-item active"><i class="fas fa-file-alt"></i> Catálogo de Prueba</a>
+               <a href="configuracion.html" class="nav-item"><i class="fas fa-cog"></i> Configuración</a>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar prueba o habilidad...">
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="../img/perfil1.jpg" alt="Admin" class="avatar">
+                    <span class="user-name">Carlos Ramirez - Admin_RH</span>
+                    <i class="fas fa-th menu-grid-icon"></i>
+                </div>
+            </header>
+
+            <section class="pruebas-area">
+                <div class="header-section">
+                    <h1 class="page-title">Biblioteca de Evaluaciones</h1>
+                    <p class="page-subtitle">Gestiona y asigna pruebas de Soft Skills validadas para la industria automotriz.</p>
+                </div>
+
+                <div class="pruebas-grid">
+                    <div class="test-card">
+                        <div class="card-icon leadership-icon"><i class="fas fa-users-cog"></i></div>
+                        <div class="card-body">
+                            <span class="test-category">Liderazgo</span>
+                            <h3>Liderazgo Transformacional Automotriz (LTA)</h3>
+                            <p>Evalúa la capacidad de influir en equipos de planta, gestionar KPIs y tomar decisiones críticas sin autoridad formal.</p>
+                            <div class="test-meta"><span><i class="far fa-clock"></i> 25 min</span><span><i class="fas fa-signal"></i> Gerencial/Mid</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline btn-full" onclick="abrirDemo('LTA')">Ver Demo</button>
+                            <button class="btn-primary btn-full" onclick="abrirAsignacion('LTA', 'Liderazgo Transformacional')">Asignar</button>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="card-icon conflict-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="card-body">
+                            <span class="test-category">Resolución</span>
+                            <h3>Negociación y Conflicto en Planta (NCP)</h3>
+                            <p>Simulaciones de alta presión entre departamentos (ej. Calidad vs Producción) para encontrar soluciones raíz.</p>
+                            <div class="test-meta"><span><i class="far fa-clock"></i> 20 min</span><span><i class="fas fa-signal"></i> Ingenieros Sr</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline btn-full" onclick="abrirDemo('NCP')">Ver Demo</button>
+                            <button class="btn-primary btn-full" onclick="abrirAsignacion('NCP', 'Resolución de Conflictos')">Asignar</button>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="card-icon pressure-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="card-body">
+                            <span class="test-category">Resiliencia</span>
+                            <h3>Adaptabilidad bajo Presión OEM (APO)</h3>
+                            <p>Mide la respuesta conductual ante paros de línea inesperados, cambios de ingeniería o fallas de proveedores.</p>
+                            <div class="test-meta"><span><i class="far fa-clock"></i> 15 min</span><span><i class="fas fa-signal"></i> Operativo/Jr</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline btn-full" onclick="abrirDemo('APO')">Ver Demo</button>
+                            <button class="btn-primary btn-full" onclick="abrirAsignacion('APO', 'Adaptabilidad bajo Presión')">Asignar</button>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="card-icon teamwork-icon"><i class="fas fa-comments"></i></div>
+                        <div class="card-body">
+                            <span class="test-category">Comunicación</span>
+                            <h3>Comunicación Asertiva Multidisciplinaria (CAM)</h3>
+                            <p>Evalúa la claridad al transmitir datos técnicos a áreas no técnicas (Compras, Logística, Finanzas).</p>
+                            <div class="test-meta"><span><i class="far fa-clock"></i> 30 min</span><span><i class="fas fa-signal"></i> Todos</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline btn-full" onclick="abrirDemo('CAM')">Ver Demo</button>
+                            <button class="btn-primary btn-full" onclick="abrirAsignacion('CAM', 'Comunicación Asertiva')">Asignar</button>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="card-icon emotional-icon"><i class="fas fa-brain"></i></div>
+                        <div class="card-body">
+                            <span class="test-category">Temperamento</span>
+                            <h3>Inteligencia Emocional en Manufactura (IEM)</h3>
+                            <p>Mide el autoconocimiento y autocontrol en entornos fabriles exigentes y ruidosos de Tier 1.</p>
+                            <div class="test-meta"><span><i class="far fa-clock"></i> 20 min</span><span><i class="fas fa-signal"></i> Todos</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline btn-full" onclick="abrirDemo('IEM')">Ver Demo</button>
+                            <button class="btn-primary btn-full" onclick="abrirAsignacion('IEM', 'Inteligencia Emocional')">Asignar</button>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="card-icon strategy-icon"><i class="fas fa-chess"></i></div>
+                        <div class="card-body">
+                            <span class="test-category">Estrategia</span>
+                            <h3>Pensamiento Estratégico y Decisiones</h3>
+                            <p>Evalúa la capacidad de analizar datos de producción rápidos para tomar decisiones a largo plazo.</p>
+                            <div class="test-meta"><span><i class="far fa-clock"></i> 25 min</span><span><i class="fas fa-signal"></i> Directivos</span></div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-outline btn-full" onclick="abrirDemo('PET')">Ver Demo</button>
+                            <button class="btn-primary btn-full" onclick="abrirAsignacion('PET', 'Pensamiento Estratégico')">Asignar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-demo" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="demo-titulo">Simulador de Prueba</h2>
+                <button class="modal-close" onclick="cerrarModal('modal-demo')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-scenario">
+                    <h4 class="section-title"><i class="fas fa-desktop"></i> Escenario Situacional:</h4>
+                    <p id="demo-texto" class="scenario-text">Cargando escenario...</p>
+                </div>
+                <div class="demo-options" id="demo-opciones">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="cerrarModal('modal-demo')">Cerrar Demo</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-asignar" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Asignar Evaluación</h2>
+                <button class="modal-close" onclick="cerrarModal('modal-asignar')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="asignacion-subtitle">Estás asignando la prueba: <strong id="asignar-nombre-prueba">--</strong></p>
+                
+                <h4 class="section-title" style="margin-top: 20px;">1. ¿A quién deseas asignar esta prueba?</h4>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="tipo_asignacion" value="candidato" checked> 
+                        <span class="radio-custom"></span> Un Candidato Específico
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tipo_asignacion" value="vacante"> 
+                        <span class="radio-custom"></span> Todos los Postulantes de una Vacante
+                    </label>
+                </div>
+
+                <h4 class="section-title" style="margin-top: 25px;">2. Selecciona el destino:</h4>
+                <select id="select-destino" class="custom-select-large">
+                    <option value="">Cargando datos desde la base de datos...</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="cerrarModal('modal-asignar')">Cancelar</button>
+                <button type="button" class="btn-primary" id="btn-confirmar-asignacion"><i class="fas fa-paper-plane"></i> Enviar Prueba</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/pruebas.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAS - Directorio de Candidatos</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/candidatos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="../img/logomini.png" alt="STAS Logo Mini" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-title">STAS</span>
+                    <span class="brand-subtitle">Strategic Talent<br>Auto-Selector</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i> Panel Principal</a>
+                <a href="vacantes.html" class="nav-item"><i class="fas fa-briefcase"></i> Vacantes</a>
+                <a href="candidatos.html" class="nav-item active"><i class="fas fa-user-friends"></i> Candidatos</a>
+                <a href="pruebas.html" class="nav-item"><i class="fas fa-file-alt"></i> Catálogo de Prueba</a>
+                <a href="configuracion.html" class="nav-item"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar vacante o ingeniero...">
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="../img/perfil1.jpg" alt="Admin" class="avatar">
+                    <span class="user-name">Carlos Ramirez - Admin_RH</span>
+                    <i class="fas fa-th menu-grid-icon"></i>
+                </div>
+            </header>
+
+            <section class="candidatos-area">
+                <div class="header-section">
+                    <h1 class="page-title">Directorio de Talentos</h1>
+                    <p class="page-subtitle">Explora y filtra a todos los ingenieros registrados en el ecosistema STAS.</p>
+                </div>
+
+                <div class="filters-bar card">
+                    <div class="filter-group search-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="filtro-nombre" placeholder="Buscar por nombre o apellido...">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <select id="filtro-area">
+                            <option value="Todos">Todas las Áreas</option>
+                            <option value="Ingeniería">Ingeniería</option>
+                            <option value="Calidad">Calidad</option>
+                            <option value="Logística">Logística</option>
+                            <option value="Producción">Producción</option>
+                            <option value="Finanzas">Finanzas</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <select id="filtro-experiencia">
+                            <option value="Todos">Cualquier Experiencia</option>
+                            <option value="Junior">Junior (0 - 3 años)</option>
+                            <option value="Mid">Mid-Senior (4 - 7 años)</option>
+                            <option value="Senior">Senior (8+ años)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-outline" id="btn-limpiar" style="padding: 12px 15px;"><i class="fas fa-sync-alt"></i></button>
+                    <button class="btn-primary" id="btn-nuevo-usuario"><i class="fas fa-mobile-alt"></i> Alta en App Móvil</button>
+                </div>
+
+                <div class="candidatos-grid" id="grid-candidatos">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-perfil" class="modal-overlay">
+        <div class="modal-container profile-modal">
+            <div class="modal-header">
+                <h2>Ficha Técnica del Talento</h2>
+                <button id="btn-cerrar-perfil" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-header-info">
+                    <div class="profile-avatar-large" id="modal-iniciales">--</div>
+                    <div class="profile-titles">
+                        <h3 id="modal-nombre">Nombre del Candidato</h3>
+                        <p id="modal-puesto">Puesto Actual</p>
+                        <span class="badge badge-gray" id="modal-area">Área</span>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <h4 class="section-title">Información Profesional</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-briefcase"></i> Experiencia:</span>
+                            <span class="detail-value" id="modal-exp">-- años</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-award"></i> Certificaciones Completas:</span>
+                            <span class="detail-value" id="modal-certs">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-graduation-cap"></i> Estatus STAS:</span>
+                            <span class="detail-value" id="modal-evaluaciones" style="font-weight: bold;">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fas fa-map-marker-alt"></i> Disponibilidad:</span>
+                            <span class="detail-value">Inmediata</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cerrar-secundario">Cerrar</button>
+                <button type="button" class="btn-primary" id="btn-contactar"><i class="fas fa-envelope"></i> Enviar Mensaje</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-registro" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Registrar Nuevo Usuario Móvil</h2>
+                <button id="btn-cerrar-registro-x" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="color: #7F8C8D; margin-bottom: 20px;">Genera las credenciales de acceso para que un nuevo talento pueda iniciar sesión en la App Móvil de STAS y completar su perfil.</p>
+                
+                <form id="form-nuevo-usuario">
+                    <h4 class="section-title"><i class="fas fa-user"></i> Datos Personales</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nombre(s)</label>
+                            <input type="text" id="reg-nombre" placeholder="Ej. Carlos" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono (WhatsApp)</label>
+                            <input type="tel" id="reg-tel" placeholder="10 dígitos" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido Paterno</label>
+                            <input type="text" id="reg-ap" placeholder="Ej. Ruiz" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido Materno</label>
+                            <input type="text" id="reg-am" placeholder="Ej. Soto">
+                        </div>
+                    </div>
+
+                    <h4 class="section-title" style="margin-top: 20px;"><i class="fas fa-briefcase"></i> Perfil Inicial</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Tipo de Usuario</label>
+                            <select id="reg-rol" required>
+                                <option value="6">Candidato Interno (Empleado)</option>
+                                <option value="7">Candidato Externo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Departamento Asignado</label>
+                            <select id="reg-depto" required>
+                                <option value="1">Ingeniería</option>
+                                <option value="2">Calidad</option>
+                                <option value="3">Producción</option>
+                                <option value="4">Logística</option>
+                                <option value="6">Finanzas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h4 class="section-title" style="margin-top: 20px;"><i class="fas fa-key"></i> Credenciales de Acceso (App Móvil)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Correo Electrónico (Usuario)</label>
+                            <input type="email" id="reg-email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contraseña Temporal</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" id="reg-pass" value="STAS-2026-Temp" required style="flex: 1;">
+                                <button type="button" class="btn-outline" id="btn-generar-pass" style="padding: 10px;" title="Generar Aleatoria"><i class="fas fa-random"></i></button>
+                            </div>
+                            <small style="color: #7F8C8D; font-size: 0.8rem; margin-top: 5px;">Se le pedirá cambiarla en la App Móvil.</small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cerrar-registro">Cancelar</button>
+                <button type="button" class="btn-primary" id="btn-guardar-registro"><i class="fas fa-paper-plane"></i> Crear Cuenta y Enviar Correo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/candidatos.js"></script>
+</body>
+</html>

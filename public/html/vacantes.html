@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAS - Gestión de Vacantes</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/vacantes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="../img/logomini.png" alt="STAS Logo Mini" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-title">STAS</span>
+                    <span class="brand-subtitle">Strategic Talent<br>Auto-Selector</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i> Panel Principal</a>
+                <a href="vacantes.html" class="nav-item active"><i class="fas fa-briefcase"></i> Vacantes</a>
+               <a href="candidatos.html" class="nav-item"><i class="fas fa-user-friends"></i> Candidatos</a>
+               <a href="pruebas.html" class="nav-item"><i class="fas fa-file-alt"></i> Catálogo de Prueba</a>
+                <a href="configuracion.html" class="nav-item"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar vacante o ingeniero...">
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="../img/perfil1.jpg" alt="Admin" class="avatar">
+                    <span class="user-name">Carlos Ramirez - Admin_RH</span>
+                    <i class="fas fa-th menu-grid-icon"></i>
+                </div>
+            </header>
+
+            <section class="vacantes-area">
+                <div class="vacante-header card">
+                    <select id="selector-vacante" class="vacante-title-select">
+                        <option value="">Cargando vacantes...</option>
+                    </select>
+
+                    <div class="vacante-badges">
+                        <button id="btn-nueva-vacante" class="btn-primary">Nueva Vacante</button>
+                        <span class="badge badge-green" id="badge-estatus">Estatus: Abierta</span>
+                        <span class="badge badge-gray" id="badge-tipo">Interna</span>
+                    </div>
+                </div>
+
+                <div class="vacantes-grid">
+                    <div class="ranking-section card">
+                        <div class="ranking-header">
+                            <h2>Ranking Lista</h2>
+                            <div class="ranking-tabs">
+                                <span class="active">Top 3 de la vacante</span>
+                            </div>
+                        </div>
+
+                        <div class="candidatos-list" id="contenedor-candidatos">
+                            <p style="color:#7F8C8D; text-align:center; padding: 20px;">Cargando candidatos del algoritmo STAS...</p>
+                        </div>
+                    </div>
+
+                    <div class="inspection-section card">
+                        <h2>Panel de inspección</h2>
+                        <p class="inspection-subtitle" id="inspect-name">Selecciona un candidato</p>
+                        
+                        <div class="radar-chart-container">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+
+                        <div class="inspection-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Experiencia:</span>
+                                <span class="stat-value" id="inspect-exp">--</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Certificaciones:</span>
+                                <span class="stat-value" id="inspect-certs">--</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Habilidades Blandas:</span>
+                                <span class="stat-value" id="inspect-soft">--</span>
+                            </div>
+                        </div>
+
+                        <div class="inspection-actions">
+                            <button id="btn-entrevista" class="btn-primary btn-large">Entrevista</button>
+                            <button id="btn-descartar" class="btn-secondary btn-large">Descartar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-vacante" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Crear Nueva Vacante</h2>
+                <button id="btn-cerrar-modal" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-nueva-vacante">
+                    <h3 class="form-section-title">1. Datos Generales</h3>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Título del Puesto</label><input type="text" placeholder="Ej. Ingeniero de Calidad APQP" required></div>
+                        <div class="form-group"><label>Departamento</label><select required><option value="">Selecciona...</option><option>Ingeniería y Manufactura</option><option>Calidad</option><option>Logística</option></select></div>
+                        <div class="form-group"><label>Planta / Ubicación</label><select required><option value="">Selecciona...</option><option>Planta Querétaro</option><option>Corporativo</option></select></div>
+                        <div class="form-group"><label>Tipo de Vacante</label><select required><option>Interna / Externa</option><option>Solo Interna</option></select></div>
+                    </div>
+                    <h3 class="form-section-title">2. Perfil del Puesto</h3>
+                    <div class="form-group-full"><label>Objetivo del Puesto</label><textarea rows="2" required></textarea></div>
+                    <div class="form-group-full"><label>Funciones Principales</label><textarea rows="3" required></textarea></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Nivel Educativo</label><select required><option value="">Selecciona...</option><option>Ing. Industrial</option><option>Ing. Mecatrónica</option></select></div>
+                        <div class="form-group"><label>Años de Experiencia</label><input type="number" min="0" required></div>
+                    </div>
+                    <div class="form-group-full"><label>Requisitos Técnicos</label><input type="text" placeholder="Ej. APQP, IATF 16949"></div>
+                    <h3 class="form-section-title">3. Condiciones y Beneficios</h3>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Rango Salarial</label><input type="text" required></div>
+                        <div class="form-group"><label>Modalidad</label><select required><option>Turno Administrativo</option><option>Híbrido</option></select></div>
+                    </div>
+                    <div class="form-group-full">
+                        <label>Beneficios</label>
+                        <div class="checkbox-grid">
+                            <label><input type="checkbox" checked> Fondo de Ahorro</label>
+                            <label><input type="checkbox" checked> SGMM</label>
+                            <label><input type="checkbox" checked> Comedor</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cancelar-modal">Cancelar</button>
+                <button type="button" class="btn-primary" id="btn-guardar-vacante">Publicar Vacante</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/vacantes.js"></script>
+</body>
+</html>

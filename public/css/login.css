@@ -1,0 +1,154 @@
+/* =========================================
+   STAS - Estilos Generales y Reset
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Evita barras de desplazamiento */
+}
+
+/* =========================================
+   Estructura de Pantalla Dividida (Split Screen)
+   ========================================= */
+.full-page-split {
+    display: flex; /* Usamos flexbox para dividir la pantalla */
+    height: 100vh;
+}
+
+/* Panel Izquierdo Oscuro (El "traje" corporativo) */
+.split-left {
+    flex: 1; /* Toma el 50% de la pantalla */
+    background-color: #2D343C; /* Gris carbón muy oscuro, como en tu diseño */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el logo */
+    align-items: center; /* Centra verticalmente el logo */
+    padding: 2rem;
+    color: #ECF0F1; /* Texto casi blanco */
+}
+
+/* Panel Derecho Claro (El área de acción) */
+.split-right {
+    flex: 1; /* Toma el otro 50% de la pantalla */
+    background-color: #F0F2F5; /* Gris muy claro, limpio y profesional */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el formulario */
+    align-items: center; /* Centra verticalmente el formulario */
+    padding: 2rem;
+}
+
+/* =========================================
+   Panel Izquierdo: Estilos del Logo
+   ========================================= */
+.logo-block {
+    text-align: center;
+}
+
+.main-logo {
+    max-width: 180px; /* Ajusta el tamaño según tu logo */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.company-name {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #BDC3C7; /* Gris más claro para el subtítulo */
+}
+
+/* =========================================
+   Panel Derecho: Estilos del Formulario
+   ========================================= */
+.login-form-block {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho del formulario */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    color: #2C3E50;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #7F8C8D;
+}
+
+/* Estilos para los campos con icono */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #BDC3C7; /* Color de los iconos */
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 12px 12px 45px; /* Relleno extra a la izquierda para el icono */
+    border: 1px solid #DCE4EC;
+    border-radius: 8px; /* Bordes redondeados modernos */
+    background-color: #FFFFFF;
+    font-size: 1rem;
+}
+
+/* Botón INICIAR SESIÓN (Verde Automotriz) */
+.btn-green {
+    width: 100%;
+    padding: 12px;
+    background-color: #34744C; /* Verde del escudo de tu logo */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efecto suave al pasar el ratón */
+    margin-top: 1rem;
+}
+
+.btn-green:hover {
+    background-color: #2D6541; /* Un verde un poco más oscuro al pasar el ratón */
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.link-grey {
+    color: #7F8C8D;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.link-grey:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}

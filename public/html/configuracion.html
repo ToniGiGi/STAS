@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAS - Configuración del Sistema</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/configuracion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="../img/logomini.png" alt="STAS Logo Mini" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-title">STAS</span>
+                    <span class="brand-subtitle">Strategic Talent<br>Auto-Selector</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><i class="fas fa-home"></i> Panel Principal</a>
+                <a href="vacantes.html" class="nav-item"><i class="fas fa-briefcase"></i> Vacantes</a>
+                <a href="candidatos.html" class="nav-item"><i class="fas fa-user-friends"></i> Candidatos</a>
+                <a href="pruebas.html" class="nav-item"><i class="fas fa-file-alt"></i> Catálogo de Prueba</a>
+                <a href="configuracion.html" class="nav-item active"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar ajuste o preferencia...">
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="../img/perfil1.jpg" alt="Admin" class="avatar">
+                    <span class="user-name">Carlos Ramirez - Admin_RH</span>
+                    <i class="fas fa-th menu-grid-icon"></i>
+                </div>
+            </header>
+
+            <section class="config-area">
+                <div class="header-section">
+                    <h1 class="page-title">Ajustes del Sistema</h1>
+                    <p class="page-subtitle">Personaliza el algoritmo de selección y las preferencias de la plataforma.</p>
+                </div>
+
+                <div class="settings-container card">
+                    <div class="settings-sidebar">
+                        <ul class="settings-menu">
+                            <li class="settings-item active" data-tab="tab-algoritmo">
+                                <i class="fas fa-brain"></i> Algoritmo STAS
+                            </li>
+                            <li class="settings-item" data-tab="tab-sistema">
+                                <i class="fas fa-sliders-h"></i> Preferencias
+                            </li>
+                            <li class="settings-item" data-tab="tab-integraciones">
+                                <i class="fas fa-plug"></i> Integraciones API
+                            </li>
+                            <li class="settings-item" data-tab="tab-seguridad">
+                                <i class="fas fa-shield-alt"></i> Seguridad y Roles
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="settings-content">
+                        
+                        <div class="settings-panel active" id="tab-algoritmo">
+                            <h2 class="panel-title">Calibración del Algoritmo de Selección</h2>
+                            <p class="panel-desc">Ajusta el peso (porcentaje) que la Inteligencia Artificial de STAS le dará a cada criterio al calcular la compatibilidad de un candidato. <strong>El total debe sumar 100%.</strong></p>
+                            
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <label><i class="fas fa-cogs"></i> Habilidades Técnicas y Certificaciones</label>
+                                    <span class="slider-value" id="val-tecnica">40%</span>
+                                </div>
+                                <input type="range" class="custom-slider" id="slider-tecnica" min="0" max="100" value="40">
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <label><i class="fas fa-users"></i> Soft Skills y Evaluaciones (Catálogo)</label>
+                                    <span class="slider-value" id="val-blandas">30%</span>
+                                </div>
+                                <input type="range" class="custom-slider" id="slider-blandas" min="0" max="100" value="30">
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <label><i class="fas fa-briefcase"></i> Años de Experiencia en la Industria</label>
+                                    <span class="slider-value" id="val-exp">20%</span>
+                                </div>
+                                <input type="range" class="custom-slider" id="slider-exp" min="0" max="100" value="20">
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-header">
+                                    <label><i class="fas fa-handshake"></i> Afinidad Cultural (Ajuste a la Planta)</label>
+                                    <span class="slider-value" id="val-cultura">10%</span>
+                                </div>
+                                <input type="range" class="custom-slider" id="slider-cultura" min="0" max="100" value="10">
+                            </div>
+
+                            <div class="total-weight-box">
+                                <span>Peso Total Actual:</span>
+                                <strong id="total-weight" class="text-green">100%</strong>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel" id="tab-sistema">
+                            <h2 class="panel-title">Preferencias Generales</h2>
+                            <p class="panel-desc">Configura cómo interactúa STAS contigo y con los candidatos.</p>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Zona Horaria de la Planta</label>
+                                    <select class="custom-select">
+                                        <option>América/Mexico_City (Central)</option>
+                                        <option>América/Tijuana (Pacífico)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Idioma por Defecto (Candidatos)</label>
+                                    <select class="custom-select">
+                                        <option>Español (México)</option>
+                                        <option>Inglés (Automotriz OEM)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr class="separator">
+
+                            <h3 class="sub-title">Notificaciones por Correo</h3>
+                            
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <h4>Alerta de "Top Candidato"</h4>
+                                    <p>Recibir un correo cuando el algoritmo encuentre un perfil > 90%.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider-toggle round"></span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <h4>Resultados de Pruebas</h4>
+                                    <p>Notificar a RH cuando un candidato finalice una prueba de Soft Skills.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider-toggle round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel" id="tab-integraciones">
+                            <h2 class="panel-title">Integraciones (ERP / ATS)</h2>
+                            <p class="panel-desc">Conecta STAS con los sistemas corporativos de la armadora para sincronizar empleados.</p>
+
+                            <div class="integration-card">
+                                <div class="int-logo"><i class="fas fa-server"></i> SAP SuccessFactors</div>
+                                <div class="int-status connected">Conectado</div>
+                                <button class="btn-outline btn-small">Configurar</button>
+                            </div>
+
+                            <div class="integration-card">
+                                <div class="int-logo" style="color:#005cb9;"><i class="fas fa-cloud"></i> Workday Sync</div>
+                                <div class="int-status disconnected">Desconectado</div>
+                                <button class="btn-primary btn-small">Conectar</button>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 20px;">
+                                <label>Clave API STAS (Solo Lectura)</label>
+                                <div class="api-key-box">
+                                    <input type="password" value="sk_live_automotriz_987654321" readonly id="api-key-input">
+                                    <button class="btn-outline" onclick="mostrarAPI()"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel" id="tab-seguridad">
+                            <h2 class="panel-title">Seguridad y Control de Acceso</h2>
+                            <p class="panel-desc">Administra las políticas de seguridad de la plataforma y define los permisos por rol de usuario.</p>
+
+                            <h3 class="sub-title"><i class="fas fa-lock"></i> Políticas de Autenticación</h3>
+                            
+                            <div class="toggle-row">
+                                <div class="toggle-info">
+                                    <h4>Autenticación de Dos Factores (2FA)</h4>
+                                    <p>Exigir verificación por SMS/App para roles administrativos.</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider-toggle round"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Expiración de Contraseñas</label>
+                                    <select class="custom-select">
+                                        <option>Cada 90 días (Recomendado)</option>
+                                        <option>Cada 180 días</option>
+                                        <option>Nunca expiran</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cierre de Sesión por Inactividad</label>
+                                    <select class="custom-select">
+                                        <option>15 Minutos</option>
+                                        <option>30 Minutos</option>
+                                        <option>1 Hora</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr class="separator">
+
+                            <h3 class="sub-title"><i class="fas fa-users-cog"></i> Matriz de Permisos (Lectura)</h3>
+                            
+                            <div class="roles-table-container">
+                                <table class="roles-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Acción / Módulo</th>
+                                            <th>Admin_RH</th>
+                                            <th>Gerente_Planta</th>
+                                            <th>Reclutador_TI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: left; font-weight: bold;">Crear Nuevas Vacantes</td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                            <td><i class="fas fa-times text-red"></i></td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; font-weight: bold;">Modificar Algoritmo STAS</td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                            <td><i class="fas fa-times text-red"></i></td>
+                                            <td><i class="fas fa-times text-red"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; font-weight: bold;">Asignar Pruebas Soft Skills</td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; font-weight: bold;">Ver Salarios Corporativos</td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                            <td><i class="fas fa-check text-green"></i></td>
+                                            <td><i class="fas fa-times text-red"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <button class="btn-primary btn-large" id="btn-guardar-cambios"><i class="fas fa-save"></i> Guardar Configuración</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../js/configuracion.js"></script>
+</body>
+</html>

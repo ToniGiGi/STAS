@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAS - Inicio de Sesión</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="full-page-split">
+    <div class="split-left">
+        <div class="logo-block">
+            <img src="..\img\logo-stas.PNG" alt="Logotipo STAS" class="main-logo">
+            <h1 class="company-name">STAS</h1>
+            <p class="tagline">Strategic Talent<br>Auto-Selector</p>
+        </div>
+    </div>
+
+    <div class="split-right">
+        <div class="login-form-block">
+            <h2 class="section-title">INICIO DE SESIÓN</h2>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Correo electrónico</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="email" id="email" name="email" required placeholder="Correo electrónico">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock icon"></i>
+                        <input type="password" id="password" name="password" required placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-green">INICIAR SESIÓN</button>
+            </form>
+            
+            <div class="form-footer">
+                <a href="#" class="link-grey">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAS - Panel Principal</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="../img/logomini.png" alt="STAS Logo Mini" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-title">STAS</span>
+                    <span class="brand-subtitle">Strategic Talent<br>Auto-Selector</span>
+                </div>
+            </div>
+
+         <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active"><i class="fas fa-home"></i> Panel Principal</a>
+                
+                <a href="vacantes.html" class="nav-item"><i class="fas fa-briefcase"></i> Vacantes</a>
+                
+                <a href="candidatos.html" class="nav-item"><i class="fas fa-user-friends"></i> Candidatos</a>
+                <a href="pruebas.html" class="nav-item"><i class="fas fa-file-alt"></i> Catálogo de Prueba</a>
+                <a href="configuracion.html" class="nav-item"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar vacante o ingeniero...">
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="../img/perfil1.jpg" alt="Admin" class="avatar">
+                    <span class="user-name">Carlos Ramirez - Admin_RH</span>
+                    <i class="fas fa-th menu-grid-icon"></i>
+                </div>
+            </header>
+
+            <section class="dashboard-area">
+                <h1 class="page-title">Panel Principal</h1>
+
+                <div class="dashboard-grid">
+                    <div class="card chart-card">
+                        <h3>Estado General</h3>
+                        <p class="subtitle">Candidatos por proceso</p>
+                        <div class="chart-placeholder">
+                           <div id="grafica-estado-general" style="width: 100%; height: 250px; margin-top: 15px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card stat-card">
+                        <h3>Vacantes Activas</h3>
+                        <div class="stat-number" id="kpi-vacantes">...</div>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Candidatos Totales</h3>
+                        <div class="stat-number" id="kpi-candidatos">...</div>
+                    </div>
+                    <div class="card stat-card">
+                        <h3>Tiempo promedio de cierre</h3>
+                        <div class="stat-number" id="kpi-tiempo">...</div>
+                    </div>
+
+                    <div class="card activity-card">
+                        <div class="card-header-flex">
+                            <h3>Actividad Reciente</h3>
+                            <span class="filter-text">Filtrar</span>
+                        </div>
+                        <ul class="activity-list" id="lista-actividad">
+                        </ul>
+                    </div>
+
+                  <div class="card calendar-card">
+    <h3>Próximas entrevistas</h3>
+    <div class="mini-calendar">
+        <div class="calendar-header">
+            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+            <h4 id="month-year">Mes Año</h4>
+            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="calendar-days">
+            <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
+        </div>
+        <div class="calendar-dates" id="calendar-dates">
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

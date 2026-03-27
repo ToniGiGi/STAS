@@ -1,0 +1,146 @@
+/* ESTILOS BASE Y LAYOUT */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+body { background-color: #F0F2F5; color: #333; overflow-x: hidden; }
+.app-container { display: flex; height: 100vh; }
+
+.sidebar { width: 260px; background-color: #2D343C; color: white; display: flex; flex-direction: column; flex-shrink: 0; }
+.sidebar-brand { display: flex; align-items: center; padding: 20px; border-bottom: 1px solid #3E4650; }
+.brand-logo { width: 45px; height: auto; margin-right: 15px; }
+.brand-title { font-size: 1.5rem; font-weight: bold; display: block; letter-spacing: 1px; }
+.brand-subtitle { font-size: 0.75rem; color: #BDC3C7; }
+.sidebar-nav { padding-top: 20px; display: flex; flex-direction: column; }
+.nav-item { padding: 15px 25px; color: #BDC3C7; text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
+.nav-item i { width: 25px; font-size: 1.1rem; }
+.nav-item:hover { color: white; background-color: #3E4650; }
+.nav-item.active { background-color: #4A8A5A; color: white; border-left: 4px solid #82C91E; }
+
+.main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+.topbar { height: 70px; min-height: 70px; flex-shrink: 0; background-color: white; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 10; }
+.search-bar { display: flex; align-items: center; background-color: #F0F2F5; padding: 8px 15px; border-radius: 8px; width: 400px; }
+.search-bar input { border: none; background: transparent; outline: none; width: 100%; margin-left: 10px; font-size: 0.95rem; }
+.user-profile { display: flex; align-items: center; gap: 15px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.user-name { font-weight: 600; font-size: 0.95rem; }
+
+/* ÁREA DE CONFIGURACIÓN */
+.config-area { padding: 30px; }
+.header-section { margin-bottom: 30px; }
+.page-title { font-size: 2.2rem; color: #111; font-weight: bold; margin-bottom: 5px; }
+.page-subtitle { color: #7F8C8D; font-size: 1.1rem; }
+
+.card { background-color: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); overflow: hidden; }
+
+/* LAYOUT DE SETTINGS (Izquierda Menú, Derecha Contenido) */
+.settings-container { display: flex; min-height: 600px; }
+
+/* Menú Lateral de Configuración */
+.settings-sidebar { width: 280px; background-color: #FAFAFA; border-right: 1px solid #E0E6ED; padding: 20px 0; }
+.settings-menu { list-style: none; }
+.settings-item { padding: 15px 25px; cursor: pointer; color: #555; font-weight: 600; font-size: 1rem; transition: 0.3s; display: flex; align-items: center; gap: 12px; border-left: 4px solid transparent; }
+.settings-item:hover { background-color: #F0F2F5; color: #111; }
+.settings-item.active { background-color: #E8F5E9; color: #34744C; border-left-color: #34744C; }
+.settings-item i { width: 20px; text-align: center; }
+
+/* Panel de Contenido */
+.settings-content { flex: 1; padding: 40px; position: relative; }
+.settings-panel { display: none; animation: fadeIn 0.3s ease-in-out; }
+.settings-panel.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.panel-title { font-size: 1.6rem; color: #111; margin-bottom: 10px; }
+.panel-desc { color: #7F8C8D; font-size: 1rem; margin-bottom: 30px; line-height: 1.5; }
+
+/* =====================================
+   ELEMENTOS DE FORMULARIO AVANZADOS
+   ===================================== */
+/* Sliders del Algoritmo */
+.slider-group { margin-bottom: 25px; }
+.slider-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; color: #333; }
+.slider-header i { color: #34744C; margin-right: 8px; }
+.slider-value { background-color: #F0F2F5; padding: 3px 10px; border-radius: 6px; color: #34744C; font-size: 0.9rem; }
+
+.custom-slider { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 5px; background: #E0E6ED; outline: none; transition: 0.2s; }
+.custom-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #34744C; cursor: pointer; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.custom-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #34744C; cursor: pointer; border: 3px solid white; }
+
+.total-weight-box { background-color: #F8F9F9; border: 1px dashed #BDC3C7; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 1.1rem; margin-top: 30px; }
+.text-green { color: #34744C; font-size: 1.3rem; }
+.text-red { color: #e74c3c; font-size: 1.3rem; }
+
+/* Selectores Generales */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-weight: bold; color: #555; font-size: 0.95rem; }
+.custom-select { padding: 12px 15px; border: 1px solid #BDC3C7; border-radius: 8px; font-size: 0.95rem; outline: none; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill="%237F8C8D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); background-repeat: no-repeat; background-position: right 10px center; cursor: pointer; }
+.custom-select:focus { border-color: #34744C; }
+
+.separator { border: none; border-top: 1px solid #E0E6ED; margin: 30px 0; }
+.sub-title { font-size: 1.2rem; color: #111; margin-bottom: 20px; }
+
+/* Toggles (Interruptores estilo iOS) */
+.toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background-color: #FAFAFA; padding: 15px; border-radius: 8px; border: 1px solid #F0F2F5; }
+.toggle-info h4 { color: #333; margin-bottom: 5px; }
+.toggle-info p { color: #7F8C8D; font-size: 0.9rem; margin: 0; }
+
+.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider-toggle:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+input:checked + .slider-toggle { background-color: #34744C; }
+input:focus + .slider-toggle { box-shadow: 0 0 1px #34744C; }
+input:checked + .slider-toggle:before { transform: translateX(24px); }
+.slider-toggle.round { border-radius: 34px; }
+.slider-toggle.round:before { border-radius: 50%; }
+
+/* Integraciones */
+.integration-card { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border: 1px solid #E0E6ED; border-radius: 8px; margin-bottom: 15px; }
+.int-logo { font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.int-status { font-size: 0.85rem; padding: 5px 10px; border-radius: 20px; font-weight: bold; }
+.connected { background-color: #E8F5E9; color: #27ae60; }
+.disconnected { background-color: #FDEDEC; color: #e74c3c; }
+.api-key-box { display: flex; gap: 10px; }
+.api-key-box input { flex: 1; padding: 12px; background-color: #F0F2F5; border: 1px solid #E0E6ED; border-radius: 8px; color: #555; font-family: monospace; outline: none; }
+
+/* Botones */
+.btn-primary { background-color: #34744C; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.btn-primary:hover { background-color: #2D6541; }
+.btn-outline { background-color: white; color: #333; border: 1px solid #BDC3C7; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.btn-outline:hover { background-color: #F0F2F5; }
+.btn-small { padding: 8px 15px; font-size: 0.85rem; }
+.btn-large { padding: 15px 30px; font-size: 1.1rem; }
+
+.panel-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #E0E6ED; display: flex; justify-content: flex-end; }
+
+/* ========================================================
+   ESTILOS DE LA TABLA DE SEGURIDAD Y ROLES
+   ======================================================== */
+.roles-table-container { 
+    overflow-x: auto; 
+    margin-bottom: 20px; 
+    border: 1px solid #E0E6ED; 
+    border-radius: 8px; 
+}
+.roles-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: center; 
+}
+.roles-table th { 
+    background-color: #F0F2F5; 
+    padding: 15px 12px; 
+    font-weight: bold; 
+    color: #333; 
+    border-bottom: 2px solid #BDC3C7; 
+}
+.roles-table td { 
+    padding: 15px 12px; 
+    border-bottom: 1px solid #E0E6ED; 
+    color: #555; 
+}
+.roles-table tr:last-child td { 
+    border-bottom: none; 
+}
+.roles-table tr:hover {
+    background-color: #FAFAFA;
+}
